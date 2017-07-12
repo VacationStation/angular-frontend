@@ -1,0 +1,23 @@
+<div class="grid-list-container">
+  <md-grid-list cols="{{numberOfCols}}" rowHeight="2:1">
+    <md-grid-tile
+      *ngFor="let group of groups; let i = index; let l = last"
+      colspan="{{(groups.length % 2 === 1 && l && numberOfCols === 2) ? 2 : 1}}"
+      class="link accent-blue-bg"
+      (click)="navigateToGroup(group._id)"
+    >
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col text-center">
+            <span class="pacifico">{{group.destination}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            {{group.name}}
+          </div>
+        </div>
+      </div>
+    </md-grid-tile>
+  </md-grid-list>
+</div>

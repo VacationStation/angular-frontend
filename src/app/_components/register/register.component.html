@@ -1,0 +1,44 @@
+<div class="mw-700">
+  <form>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="text" name="firstname" [(ngModel)]="user.firstName" placeholder="Vorname">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="text" name="lastname" [(ngModel)]="user.lastName" placeholder="Nachname">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="email" name="email" [(ngModel)]="user.email" placeholder="E-Mail Adresse">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="password" name="password" [(ngModel)]="user.password" placeholder="Passwort">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="password" name="confirmed_password" [(ngModel)]="confirmedPassword" placeholder="Passwort wiederholen">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button md-raised-button (click)="register()">Registrieren</button>
+      </div>
+    </div>
+  </form>
+</div>

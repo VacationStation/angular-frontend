@@ -1,0 +1,49 @@
+<div class="mw-700">
+  <h1>Neue Gruppe</h1>
+  <form>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="text" name="name" [(ngModel)]="group.name" placeholder="Gruppenname">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="text" name="description" [(ngModel)]="group.description" placeholder="Beschreibung">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="text" name="destination" [(ngModel)]="group.destination" placeholder="Reiseziel">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput [mdDatepicker]="picker_from" name="from" [(ngModel)]="group.from" placeholder="Von">
+          <button mdSuffix [mdDatepickerToggle]="picker_from"></button>
+        </md-input-container>
+        <md-datepicker #picker_from></md-datepicker>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput [mdDatepicker]="picker_to" name="to" [(ngModel)]="group.to" placeholder="Bis">
+          <button mdSuffix [mdDatepickerToggle]="picker_to"></button>
+        </md-input-container>
+        <md-datepicker #picker_to></md-datepicker>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button md-raised-button (click)="saveGroup()">Speichern</button>
+      </div>
+    </div>
+  </form>
+</div>

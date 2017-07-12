@@ -1,0 +1,23 @@
+<div class="mw-700">
+  <form>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="email" [(ngModel)]="username" name="username" placeholder="E-Mail Adresse">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="password" [(ngModel)]="password" name="password" placeholder="Passwort">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button md-raised-button (click)="login()">Login</button>
+      </div>
+    </div>
+  </form>
+</div>

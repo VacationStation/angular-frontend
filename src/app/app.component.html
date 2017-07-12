@@ -1,0 +1,216 @@
+<md-toolbar class="md-toolbar container-fluid">
+  <div  class="row justify-content-between full-width heading-row">
+    <div class="col-1">
+      <button *ngIf="sidePanelMode === 'over'" (click)="sidenav.toggle()" class="app-icon-button">
+      <i class="material-icons md-light md-36">menu</i>
+    </button>
+    </div>
+    <div class="col-10 text-center">
+      <span class="logo-heading">Vacation Station</span>
+    </div>
+    <div class="col-1 text-right"></div>
+  </div>
+</md-toolbar>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="{{sidePanelMode}}" opened="{{sideMenuOpen}}">
+    <ul *ngIf="isLoggedIn()">
+      <li class="nav-item divider">Menü</li>
+      <hr class="sidemenu-row"/>
+      <li class="nav-item">
+        <a class="sidemenu-link" routerLink="/home" routerLinkActive="accent-blue" (click)="toggleSidenav(sidenav)">Übersicht</a>
+      </li>
+      <li class="nav-item">
+        <a class="sidemenu-link" routerLink="/new_group" routerLinkActive="accent-blue" (click)="toggleSidenav(sidenav)">Neue Gruppe</a>
+      </li>
+      <li class="nav-item">
+        <a class="sidemenu-link" routerLink="/group/join" routerLinkActive="accent-blue" (click)="toggleSidenav(sidenav)">Gruppe beitreten</a>
+      </li>
+      <li class="nav-item divider">Organisation</li>
+      <hr class="sidemenu-row"/>
+      <li class="nav-item">
+        <a class="sidemenu-link" routerLink="/my_groups" routerLinkActive="accent-blue" (click)="toggleSidenav(sidenav)">Meine Gruppen</a>
+      </li>
+      <li class="nav-item">
+        <a class="sidemenu-link" routerLink="/finances" (click)="toggleSidenav(sidenav)" routerLinkActive="accent-blue">Finanzen</a>
+      </li>
+      <hr class="sidemenu-row"/>
+      <li class="nav-item">
+        <a class="sidemenu-link logout-btn" (click)="logout(); toggleSidenav(sidenav)">Logout</a>
+      </li>
+    </ul>
+    <ul *ngIf="!isLoggedIn()">
+      <li class="nav-item divider">Menü</li>
+      <hr class="sidemenu-row"/>
+      <li class="nav-item">
+        <a class="sidemenu-link" routerLink="/login" routerLinkActive="active" (click)="toggleSidenav(sidenav)">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="sidemenu-link" routerLink="/register" routerLinkActive="active" (click)="toggleSidenav(sidenav)">Registrieren</a>
+      </li>
+    </ul>
+  </md-sidenav>
+  <div class="my-content">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</md-sidenav-container>
+<style>
+
+
+
+  .logo-heading {
+    font-family: 'Pacifico', cursive;
+  }
+
+  .sidemenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #4791D2;
+    color: #F3ECF9;
+    z-index: 1031;
+    overflow-y: scroll;
+  }
+
+  .content {
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    left: 250px;
+  }
+
+  .close-btn {
+    display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .heading-row {
+      margin-top: 20px;
+    }
+
+    .sidemenu {
+      position: fixed;
+      left: -250px;
+      transition: left 0.25s;
+    }
+
+    .sidemenu.open {
+      left: 0;
+    }
+
+    .content {
+      left: 0;
+    }
+
+    .close-btn {
+      display: inline-block;
+    }
+  }
+
+  .logout-btn:hover {
+    cursor: pointer;
+    color: #90CAF9;
+  }
+
+  .sidemenu-heading {
+    background-color: #FFC107;
+    color: #FFFFFF;
+    width: 100%;
+    height: 75px;
+  }
+
+  .sidemenu-row {
+    margin: 0.5rem 0;
+    color: darkgray;
+  }
+
+  .sidemenu-link {
+    color: inherit;
+    padding: 0.5rem 0;
+    display: inline-block;
+  }
+
+  .sidemenu-link.active {
+    color: #90CAF9;
+  }
+
+  .sidemenu-link:hover {
+    text-decoration: none;
+    color: #90CAF9;
+  }
+
+  .sidemenu ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-item.divider {
+    font-weight: bolder;
+    font-size: 1.1em;
+    margin: 10px 0;
+  }
+
+  .app-icon-button {
+    box-shadow: none;
+    user-select: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    filter: none;
+    font-weight: normal;
+    height: auto;
+    line-height: inherit;
+    margin: 0;
+    min-width: 0;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+  }
+
+  .md-toolbar {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 64px;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0 16px;
+    flex-direction: column;
+    background-color: #FFC107;
+    color: #FFFFFF;
+  }
+
+  md-sidenav {
+    height: calc(100vh - 64px);
+  }
+
+  html, body, material-app, md-sidenav-container, .my-content {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  md-sidenav {
+    width: 250px;
+    height: 100%;
+  }
+
+  md-sidenav-container {
+    height: calc(100vh - 64px);
+  }
+
+  ul {
+    padding: 0;
+  }
+
+</style>

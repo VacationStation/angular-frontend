@@ -1,0 +1,92 @@
+<div class="mw-700">
+  <div class="row">
+    <div class="col">
+      <md-input-container class="full-width">
+        <input mdInput type="text" name="usage" [(ngModel)]="usage" placeholder="Verwendungszweck">
+      </md-input-container>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th class="text-center">Anzahl</th>
+      <th class="text-center">Einzelpreis</th>
+      <th class="text-right">Gesamtpreis</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let position of positions; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{position.name}}</td>
+      <td class="text-center">{{position.quantity}}</td>
+      <td class="text-center">{{position.price / 100 | currency: 'EUR'}}</td>
+      <td class="text-right">{{position.price * position.quantity / 100 | currency: 'EUR'}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <md-input-container class="full-width">
+          <input mdInput type="text" name="name" [(ngModel)]="newPosition.name" placeholder="Name">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput type="number" name="amount" [(ngModel)]="newPosition.quantity" placeholder="Anzahl">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput type="text" name="price" [(ngModel)]="newPosition.price" placeholder="0.00">
+        </md-input-container>
+      </td>
+      <td>
+        <div class="col">
+          <button md-raised-button [disabled]="" (click)="addPosition()">Add</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col">
+      <md-checkbox class="example-margin" [(ngModel)]="forAll" [checked]="forAll">betrifft gesamte Gruppe</md-checkbox>
+    </div>
+  </div>
+  <ng-template [ngIf]="!forAll">
+    <div *ngFor="let member of group.member" class="row">
+      <div class="col">{{member.firstName}} {{member.lastName}}</div>
+      <div class="col">
+        <md-checkbox class="example-margin" (click)="updateRecipients(member._id)"></md-checkbox>
+      </div>
+    </div>
+  </ng-template>
+  <div *ngIf="false" class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col-2">
+          <button md-raised-button (click)="file.click()" style="margin-top: 8px;">
+            <i class="material-icons">file_upload</i>
+            <input id="file_input_file" class="none" type="file" (change)="fileChange($event)"
+                   placeholder="Upload file"
+                   accept=".png, .jpg, .jpeg, .pdf" #file/>
+          </button>
+        </div>
+        <div class="col-10">
+          <div id="file_input_text_div" class="mdl-textfield mdl-js-textfield textfield-demo">
+            <md-input-container class="full-width">
+              <input mdInput class="file_input_text" id="file_input_text" readonly value="{{fileName}}"
+                     placeholder="Datei auswählen">
+            </md-input-container>
+            <label class="mdl-textfield__label" for="file_input_text"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button md-raised-button (click)="upload()">Speichern</button>
+    </div>
+  </div>
+</div>

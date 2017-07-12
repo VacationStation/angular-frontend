@@ -1,0 +1,17 @@
+<div class="mw-700">
+  <form>
+    <div class="row">
+      <div class="col">
+        <md-input-container class="full-width">
+          <input mdInput type="text" name="invitation-code" [(ngModel)]="key" placeholder="Einladungs-Code, z.B. 1A2B3C4">
+        </md-input-container>
+        {{key}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button md-raised-button (click)="joinGroup()">Gruppe beitreten</button>
+      </div>
+    </div>
+  </form>
+</div>

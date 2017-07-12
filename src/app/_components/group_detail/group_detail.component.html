@@ -1,0 +1,130 @@
+<md-tab-group>
+  <md-tab>
+    <ng-template md-tab-label>
+      Übersicht
+    </ng-template>
+    <div class="grid-list-container">
+      <md-grid-list cols="{{numberOfColsOverview}}" rowHeight="2:1">
+        <md-grid-tile class="accent-blue-bg">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col text-center">
+                <i class="material-icons md-48">location_on</i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <span class="pacifico font-15">{{group.destination}}</span>
+              </div>
+            </div>
+          </div>
+        </md-grid-tile>
+        <md-grid-tile class="accent-blue-bg">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col text-center">
+                <i class="material-icons md-48">group</i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <span class="pacifico font-15">{{group.name}}</span>
+              </div>
+            </div>
+          </div>
+        </md-grid-tile>
+        <md-grid-tile class="accent-blue-bg" [colspan]="numberOfColsOverview === 2 ? 2 : 1">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col text-center">
+                <i class="material-icons md-48">description</i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <span class="pacifico font-15">{{group.description}}</span>
+              </div>
+            </div>
+          </div>
+        </md-grid-tile>
+        <md-grid-tile class="link accent-amber-bg" (click)="addBooking()">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col text-center">
+                <i class="material-icons md-48">add_circle</i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <span class="pacifico font-15">Buchung hinzufügen</span>
+              </div>
+            </div>
+          </div>
+        </md-grid-tile>
+        <md-grid-tile class="link accent-amber-bg" (click)="addUser()">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col text-center">
+                <i class="material-icons md-48">add_circle</i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <span class="pacifico font-15">Benutzer hinzufügen</span>
+              </div>
+            </div>
+          </div>
+        </md-grid-tile>
+      </md-grid-list>
+    </div>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
+      Mitglieder
+    </ng-template>
+    <div class="grid-list-container">
+      <md-grid-list cols="{{numberOfColsUser}}" rowHeight="2:1">
+        <md-grid-tile class="accent-blue-bg" *ngFor="let user of group.member">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col text-center">
+                <span class="pacifico font-15">{{user.firstName}} {{user.lastName}}</span>
+              </div>
+            </div>
+          </div>
+        </md-grid-tile>
+      </md-grid-list>
+    </div>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
+      Buchungen
+    </ng-template>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Rechnungssteller</th>
+        <th>Verwendung</th>
+        <th>Empfänger</th>
+        <th>Art</th>
+        <th>Betrag</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let booking of group.bookings ">
+        <td>{{booking.biller}}</td>
+        <td>{{booking.usage}}</td>
+        <td *ngIf="!booking.forAll">{{booking.recipients}}</td>
+        <td *ngIf="booking.forAll">alle</td>
+        <td>{{booking.type}}</td>
+        <td>{{booking.amount/100 | currency:'EUR'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </md-tab>
+</md-tab-group>
+<style>
+  .font-15 {
+    font-size: 1.5em !important;
+  }
+</style>

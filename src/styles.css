@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+.mw-700 {
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.grid-list-container {
+  margin-top: 10px;
+}
+
+.pacifico {
+  font-family: 'Pacifico', cursive !important;
+  font-size: 3em;
+}
+
+.accent-blue-bg {
+  background: #2979FF !important;
+  color: #FFFFFF !important;
+}
+
+.accent-blue {
+  color: #2979FF !important;
+}
+
+a .accent-blue:hover {
+  color: #448AFF !important;
+  cursor: pointer;
+}
+
+.link.accent-blue-bg:hover {
+  background-color: #448AFF !important;
+  cursor: pointer;
+}
+
+.accent-amber-bg {
+  background: #FFC400 !important;
+  color: #FFFFFF !important;
+}
+
+.link.accent-amber-bg:hover {
+  background-color: #FFD740 !important;
+  cursor: pointer;
+}
+
+.none {
+  display: none;
+}
