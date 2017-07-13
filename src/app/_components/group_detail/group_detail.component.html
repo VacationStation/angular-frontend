@@ -112,7 +112,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let booking of group.bookings ">
-        <td>{{booking.biller}}</td>
+        <td>{{booking.biller.firstName}} {{booking.biller.lastName}}</td>
         <td>{{booking.usage}}</td>
         <td *ngIf="!booking.forAll">{{booking.recipients}}</td>
         <td *ngIf="booking.forAll">alle</td>
